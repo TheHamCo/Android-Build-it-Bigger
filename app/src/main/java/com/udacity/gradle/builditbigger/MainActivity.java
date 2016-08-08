@@ -22,6 +22,16 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Button tellJokeButton = (Button) findViewById(R.id.tell_joke_button);
+        tellJokeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent jokeIntent = new Intent(this, JokeActivity.class);
+                jokeIntent.putExtra(JokeActivity.JOKE_EXTRA, JokeTeller.getJoke());
+                startActivity(jokeIntent);
+            }
+        });
+
         Button testApiButton = (Button) findViewById(R.id.test_api_button);
         testApiButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,12 +63,4 @@ public class MainActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
-    public void tellJoke(View view){
-        Intent jokeIntent = new Intent(this, JokeActivity.class);
-        jokeIntent.putExtra(JokeActivity.JOKE_EXTRA, JokeTeller.getJoke());
-        startActivity(jokeIntent);
-    }
-
-
 }
