@@ -8,6 +8,7 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/Joke Teller Cloud" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/joketeller" />
             <option value="$PROJECT_DIR$/joketellerandroid" />
@@ -16,6 +17,7 @@
         <option name="myModules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/Joke Teller Cloud" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/joketeller" />
             <option value="$PROJECT_DIR$/joketellerandroid" />

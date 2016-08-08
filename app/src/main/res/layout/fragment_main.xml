@@ -15,6 +15,7 @@
         />
 
     <Button
+        android:id="@+id/tell_joke_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/instructions_text_view"
@@ -22,6 +23,13 @@
         android:onClick="tellJoke"
 
         />
+
+    <Button
+        android:text="Test API"
+        android:layout_below="@id/tell_joke_button"
+        android:id="@+id/test_api_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
     <com.google.android.gms.ads.AdView
         android:id="@+id/adView"
