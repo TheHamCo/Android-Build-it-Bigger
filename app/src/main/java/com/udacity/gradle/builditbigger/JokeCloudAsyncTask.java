@@ -41,7 +41,7 @@ public class JokeCloudAsyncTask extends AsyncTask<Pair<Context, String>, Void, S
         String name = params[0].second;
 
         try{
-            return myApiService.sayHi(name).execute().getData();
+            return "FROM API: " + myApiService.getJoke().execute().getJoke();
         } catch (IOException e ){
             return e.getMessage();
         }

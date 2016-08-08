@@ -33,4 +33,9 @@ public class MyEndpoint {
         return response;
     }
 
+    @ApiMethod(name = "getJoke")
+    public MyJoke getJoke(){
+        return new MyJoke();
+    }
+
 }

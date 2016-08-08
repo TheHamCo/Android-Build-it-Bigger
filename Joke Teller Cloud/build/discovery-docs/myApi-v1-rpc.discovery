@@ -1,6 +1,6 @@
 {
  "kind": "discovery#rpcDescription",
- "etag": "\"zRMgE0l9nVDW4S28VYYcYQF9UW4/aznd-1Gg-8L5Lu8-m2IPV-Fjo2w\"",
+ "etag": "\"zRMgE0l9nVDW4S28VYYcYQF9UW4/rBkfcBlacm88K5YRBu78rsGOdBw\"",
  "discoveryVersion": "v1",
  "id": "myApi:v1",
  "name": "myApi",
@@ -79,9 +79,28 @@
      "type": "string"
     }
    }
+  },
+  "MyJoke": {
+   "id": "MyJoke",
+   "type": "object",
+   "properties": {
+    "joke": {
+     "type": "string"
+    }
+   }
   }
  },
  "methods": {
+  "myApi.getJoke": {
+   "id": "myApi.getJoke",
+   "allowGet": true,
+   "returns": {
+    "$ref": "MyJoke"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
   "myApi.sayHi": {
    "id": "myApi.sayHi",
    "parameters": {
