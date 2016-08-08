@@ -11,6 +11,7 @@ import static org.junit.Assert.*;
 @RunWith(AndroidJUnit4.class)
 @SmallTest
 public class JokeCloudAsyncTaskTest {
+    //TODO: Generalize to only test if AsyncTask returns non-null String, or just keep specific implementation?
     @Test
     public void jokeCloud_getsJoke(){
         (new JokeCloudAsyncTask(){
