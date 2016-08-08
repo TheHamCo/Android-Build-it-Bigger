@@ -26,7 +26,7 @@ public class MainActivity extends ActionBarActivity {
         tellJokeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent jokeIntent = new Intent(this, JokeActivity.class);
+                Intent jokeIntent = new Intent(MainActivity.this, JokeActivity.class);
                 jokeIntent.putExtra(JokeActivity.JOKE_EXTRA, JokeTeller.getJoke());
                 startActivity(jokeIntent);
             }
