@@ -13,13 +13,11 @@ import static org.junit.Assert.*;
 public class JokeCloudAsyncTaskTest {
     @Test
     public void jokeCloud_getsJoke(){
-        final String[] joke = new String[1];
         (new JokeCloudAsyncTask(){
             @Override
             protected void onPostExecute(String jokeResult) {
-                joke[0] = jokeResult;
+                assertEquals("A skeleton walks into a bar and orders a beer and a mop.",jokeResult);
             }
         }).execute();
-        assertEquals(joke[0],"hey");
     }
 }

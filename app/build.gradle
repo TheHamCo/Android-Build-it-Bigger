@@ -7,7 +7,7 @@ android {
     defaultConfig {
         applicationId "com.udacity.gradle.builditbigger"
         minSdkVersion 16
-        targetSdkVersion 24
+        targetSdkVersion 23
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
@@ -17,6 +17,9 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+    dexOptions{
+        javaMaxHeapSize "4g"
     }
 }
 
@@ -31,11 +34,15 @@ dependencies {
     // Added for AdMob
     compile project(':joketeller')
     compile project(':joketellerandroid')
-    compile 'com.android.support:appcompat-v7:24.1.0'
+    compile 'com.android.support:appcompat-v7:23.1.0'
     compile 'com.google.android.gms:play-services:9.2.1'
     compile project(path: ':Joke Teller Cloud', configuration: 'android-endpoints')
     //Testing
-    androidTestCompile 'com.android.support:support-annotations:24.1.0'
-    androidTestCompile 'com.android.support.test:runner:0.4'
-    androidTestCompile 'com.android.support.test:rules:0.4'
+    //This is required to prevent error:
+    //Error:Conflict with dependency 'com.android.support:support-annotations'. Resolved versions for app (24.1.0) and test app (23.0.1) differ. See http://g.co/androidstudio/app-test-app-conflict for details.
+    androidTestCompile ('com.android.support:support-annotations:24.1.0'){
+        exclude group: 'com.android.support'
+    }
+    androidTestCompile ('com.android.support.test:runner:0.4')
+    androidTestCompile ('com.android.support.test:rules:0.4')
 }
