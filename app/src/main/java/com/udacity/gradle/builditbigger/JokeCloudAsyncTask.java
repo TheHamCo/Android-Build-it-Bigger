@@ -1,9 +1,8 @@
 package com.udacity.gradle.builditbigger;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
-import android.support.v4.util.Pair;
-import android.widget.Toast;
 
 import com.example.mdd23.myapplication.joketellercloud.myApi.MyApi;
 import com.google.api.client.extensions.android.http.AndroidHttp;
@@ -13,15 +12,17 @@ import com.google.api.client.googleapis.services.GoogleClientRequestInitializer;
 
 import java.io.IOException;
 
+import co.dijam.michael.joketellerandroid.JokeActivity;
+
 /**
  * Created by mdd23 on 8/8/2016.
  */
-public class JokeCloudAsyncTask extends AsyncTask<Pair<Context, String>, Void, String> {
+public class JokeCloudAsyncTask extends AsyncTask<Context, Void, String> {
     private static MyApi myApiService = null;
     private Context context;
 
     @Override
-    protected String doInBackground(Pair<Context, String>... params) {
+    protected String doInBackground(Context... params) {
         if (myApiService==null){ //Singleton - do this only once
             MyApi.Builder builder = new MyApi.Builder(AndroidHttp.newCompatibleTransport(), new AndroidJsonFactory(), null)
                     .setRootUrl("http://192.168.1.14:8080/_ah/api")
@@ -37,18 +38,19 @@ public class JokeCloudAsyncTask extends AsyncTask<Pair<Context, String>, Void, S
             myApiService = builder.build();
         }
 
-        context = params[0].first;
-        String name = params[0].second;
+        context = params[0];
 
         try{
-            return "FROM API: " + myApiService.getJoke().execute().getJoke();
+            return myApiService.getJoke().execute().getJoke();
         } catch (IOException e ){
             return e.getMessage();
         }
     }
 
     @Override
-    protected void onPostExecute(String result) {
-        Toast.makeText(context, result, Toast.LENGTH_SHORT).show();
+    protected void onPostExecute(String jokeResult) {
+        Intent jokeIntent = new Intent(context, JokeActivity.class);
+        jokeIntent.putExtra(JokeActivity.JOKE_EXTRA, jokeResult);
+        context.startActivity(jokeIntent);
     }
 }

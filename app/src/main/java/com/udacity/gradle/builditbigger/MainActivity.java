@@ -1,18 +1,11 @@
 package com.udacity.gradle.builditbigger;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.util.Pair;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-
-import com.example.JokeTeller;
-
-import co.dijam.michael.joketellerandroid.JokeActivity;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -26,17 +19,7 @@ public class MainActivity extends ActionBarActivity {
         tellJokeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent jokeIntent = new Intent(MainActivity.this, JokeActivity.class);
-                jokeIntent.putExtra(JokeActivity.JOKE_EXTRA, JokeTeller.getJoke());
-                startActivity(jokeIntent);
-            }
-        });
-
-        Button testApiButton = (Button) findViewById(R.id.test_api_button);
-        testApiButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                new JokeCloudAsyncTask().execute(new Pair<Context, String>(MainActivity.this, "Michael"));
+                new JokeCloudAsyncTask().execute(MainActivity.this);
             }
         });
     }
